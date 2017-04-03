@@ -2,7 +2,7 @@ package servlets.client;
 
 import models.Pet;
 import models.User;
-import storage.MemoryStorage;
+import storage.WorkStorage;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class AddPetForUser extends HttpServlet {
 
-	private MemoryStorage storage = MemoryStorage.getInstance();
+	private WorkStorage storage = WorkStorage.getInstance();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

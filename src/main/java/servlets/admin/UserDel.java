@@ -1,6 +1,6 @@
 package servlets.admin;
 
-import storage.MemoryStorage;
+import storage.WorkStorage;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class UserDel extends HttpServlet {
 
-    private final MemoryStorage storage = MemoryStorage.getInstance();
+    private final WorkStorage storage = WorkStorage.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         storage.deleteUser(storage.getUserById(request.getParameter("id")));

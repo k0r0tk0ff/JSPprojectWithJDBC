@@ -2,7 +2,7 @@ package servlets.admin;
 
 import models.User;
 import org.slf4j.Logger;
-import storage.MemoryStorage;
+import storage.WorkStorage;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +22,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class Login extends HttpServlet {
     private static final Logger log = getLogger(Login.class);
-    private final MemoryStorage memoryStorage = MemoryStorage.getInstance();
+    private final WorkStorage memoryStorage = WorkStorage.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

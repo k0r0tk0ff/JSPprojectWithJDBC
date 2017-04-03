@@ -1,7 +1,7 @@
 package servlets.admin;
 
 import models.User;
-import storage.MemoryStorage;
+import storage.WorkStorage;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +20,7 @@ import java.io.IOException;
 
 public class UserEdit extends HttpServlet {
 
-    private final MemoryStorage storage = MemoryStorage.getInstance();
+    private final WorkStorage storage = WorkStorage.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

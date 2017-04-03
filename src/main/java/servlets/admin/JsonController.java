@@ -30,7 +30,7 @@ public class JsonController extends HttpServlet {
 /*    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        MemoryStorage.getInstance().add(
+        WorkStorage.getInstance().add(
                 new User(request.getParameter("login"), "",
                         "", "")
         );
