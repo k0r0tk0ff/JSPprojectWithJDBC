@@ -2,6 +2,7 @@ package storage;
 
 import models.User;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,15 @@ public class WorkStorage implements Storage {
     /**
      * Chose work storage
      */
-    private final Storage storage = new MemoryStorage();
+    private Storage storage = null;
+
+    public WorkStorage() {
+        try {
+            storage = new JDBCstorage();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static WorkStorage getInstance() {return INSTANCE;}
 
