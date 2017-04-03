@@ -64,7 +64,7 @@ public class UsersController extends HttpServlet  {
         User newUser = new User();
         newUser.setEmail(request.getParameter("email"));
         newUser.setLogin(request.getParameter("login"));
-        newUser.setId(storage.id.incrementAndGet());
+        //newUser.setId(storage.id.incrementAndGet());
         newUser.setPassword(request.getParameter("password"));
         newUser.setRole(request.getParameter("role"));
         storage.getInstance().add(newUser);

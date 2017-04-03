@@ -22,7 +22,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class Login extends HttpServlet {
     private static final Logger log = getLogger(Login.class);
-    private final WorkStorage memoryStorage = WorkStorage.getInstance();
+    private final WorkStorage storage = WorkStorage.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +33,7 @@ public class Login extends HttpServlet {
          */
 
         req.getRequestDispatcher("login.jsp").forward(req, resp);
-/*        User user = memoryStorage.getUserById(req.getParameter("id"));
+/*        User user = storage.getUserById(req.getParameter("id"));
 
         HttpSession session = req.getSession();
         session.setAttribute("user", user);
@@ -64,9 +64,9 @@ public class Login extends HttpServlet {
         /**
          * Bind parameter "users" for access to database with users
          */
-        req.setAttribute("users", memoryStorage.getAll());
+        req.setAttribute("users", storage.getAll());
 
-        Optional<User> result = this.memoryStorage.findByCredentionals(req.getParameter("username"),
+        Optional<User> result = this.storage.findByCredentionals(req.getParameter("username"),
                 req.getParameter("password"));
 
         if (result.isPresent()) {
