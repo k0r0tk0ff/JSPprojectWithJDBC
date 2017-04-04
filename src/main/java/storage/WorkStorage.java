@@ -15,7 +15,15 @@ public class WorkStorage implements Storage {
     /**.
      * Use singleton for storage
      */
-    private static final WorkStorage INSTANCE = new WorkStorage();
+    private static final WorkStorage INSTANCE;
+
+    static {
+        try {
+            INSTANCE = new JDBCstorage();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Chose work storage

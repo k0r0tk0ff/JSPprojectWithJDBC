@@ -17,14 +17,44 @@ import service.Settings;
  */
 
 public class JDBCstorage implements Storage {
-        
-    private Connection connection = null;
-    private PreparedStatement preparedStatement;
-    private Settings settings;
-    final List <User> users = new ArrayList<>();
+
+	private Connection connection = null;
+	private PreparedStatement preparedStatement;
+	private Settings settings;
+	final List <User> users = new ArrayList<>();
+
+	/**.
+	 * Use singleton for storage
+	 */
+	private static final JDBCstorage INSTANCE;
+
+	static {
+		INSTANCE = new JDBCstorage();
+	}
+
+	/**
+	 * Chose work storage
+	 */
+	private Storage storage = null;
+
+/*	public JDBCstorage() {
+		try {
+			storage = new JDBCstorage();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}*/
+
+
 
     public JDBCstorage() throws SQLException {
         final Settings settings = Settings.getInstance();
+
+	    try {
+		    storage = new JDBCstorage();
+	    } catch (SQLException e) {
+		    e.printStackTrace();
+	    }
 
         try {
             this.connection = DriverManager.getConnection(
@@ -39,6 +69,8 @@ public class JDBCstorage implements Storage {
         this.settings = null;
 
     }
+
+    public static JDBCstorage getInstance() {return INSTANCE;}
 
     @Override
     public void add(User user) {
