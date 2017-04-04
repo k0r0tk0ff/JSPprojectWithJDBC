@@ -53,7 +53,7 @@ public class JDBCconnectorTest {
          *  (with private constructor)
          */
         Settings settings = Settings.getInstance();
-        assertThat(settings.getValue("jdbc.username"), is("postgres"));
+        assertThat(settings.getValue("jdbc.username"), is("xxx"));
 
         /**.
         *  Test connection
@@ -62,8 +62,9 @@ public class JDBCconnectorTest {
 
         try {
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://127.0.0.1:5432/petclinic", "postgres",
-                    "zxcvbnm");
+                    settings.getValue("jdbc.url"),
+                    settings.getValue("jdbc.username"),
+                    settings.getValue("jdbc.password"));
             connection.close();
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
