@@ -25,6 +25,8 @@ INSERT into clients (name) VALUES ('mpgonch1');
 
  -- Create mpgonch1`s pet -> Tomcat (type is cat)
 
+INSERT into clients (name, password, role ) VALUES ('a','a','ROLE_ADMIN');
+
 INSERT into pets (user_id, nick, type) VALUES ('1', 'Tomcat', 'cat');
 
  -- Create mpgonch1`s pet -> PussyCat (type is cat)

@@ -101,10 +101,14 @@ public class JDBCstorage implements Storage {
 
         Optional<User> userForReturn = Optional.empty();
 
-        for (User findUser: this.users) {
-            if(findUser.getLogin().equals(username)) {
-                if (findUser.getPassword().equals(password)) userForReturn = Optional.of(findUser);
+        try {
+            for (User findUser: this.getAll()) {
+                if(findUser.getLogin().equals(username)) {
+                    if (findUser.getPassword().equals(password)) userForReturn = Optional.of(findUser);
+                }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return userForReturn;
     }
