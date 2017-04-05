@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class DelPet extends HttpServlet {
 
-	private WorkStorage storage = WorkStorage.getInstance();
+	private WorkStorage storage = (WorkStorage) WorkStorage.getInstance();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

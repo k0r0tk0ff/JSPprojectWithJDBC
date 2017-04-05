@@ -1,6 +1,7 @@
 package servlets.admin;
 
 import models.User;
+import storage.Storage;
 import storage.WorkStorage;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 /**.
@@ -20,9 +22,10 @@ import java.io.IOException;
 
 public class UserEdit extends HttpServlet {
 
-    private final WorkStorage storage = WorkStorage.getInstance();
+    private final Storage storage = WorkStorage.getInstance();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+            IOException {
 
         /**
          * Bind parameter "hiddenId" for use in edit user operation.
@@ -32,7 +35,11 @@ public class UserEdit extends HttpServlet {
         /**
          * Bind parameter "users" for access to database with users
          */
-        request.setAttribute("users", storage.getAll());
+        try {
+            request.setAttribute("users", storage.getAll());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         /**
          * After binding - forward to jsp page with web-interface for enter
@@ -48,7 +55,8 @@ public class UserEdit extends HttpServlet {
          * interact new data of user, write that data and do main logic of servlet.
          */
 
-        User editedUser = storage.getInstance().getUserById(request.getParameter("id"));
+        //User editedUser = storage.getInstance().getUserById(request.getParameter("id"));
+        User editedUser = storage.getUserById(request.getParameter("id"));
         editedUser.setEmail(request.getParameter("newEmail"));
         editedUser.setLogin(request.getParameter("newLogin"));
         editedUser.setPassword(request.getParameter("newPassword"));

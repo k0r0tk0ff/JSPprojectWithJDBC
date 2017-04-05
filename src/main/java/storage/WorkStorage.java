@@ -14,8 +14,8 @@ public class WorkStorage implements Storage {
 
     /**.
      * Use singleton for storage
-     */
-    private static final WorkStorage INSTANCE;
+/*     */
+    private static Storage INSTANCE = null;
 
     static {
         try {
@@ -38,7 +38,7 @@ public class WorkStorage implements Storage {
         }
     }
 
-    public static WorkStorage getInstance() {return INSTANCE;}
+    public static Storage getInstance() {return INSTANCE;}
 
     @Override
     public void add(User user) { storage.add(user);
@@ -59,7 +59,7 @@ public class WorkStorage implements Storage {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<User> getAll() throws SQLException {
         return INSTANCE.getAll();
     }
 

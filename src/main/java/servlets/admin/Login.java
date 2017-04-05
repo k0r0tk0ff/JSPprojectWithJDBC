@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Optional;
 
 import static org.slf4j.LoggerFactory.getLogger;
@@ -22,7 +23,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class Login extends HttpServlet {
     private static final Logger log = getLogger(Login.class);
-    private final WorkStorage storage = WorkStorage.getInstance();
+    private final WorkStorage storage = (WorkStorage) WorkStorage.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -64,7 +65,11 @@ public class Login extends HttpServlet {
         /**
          * Bind parameter "users" for access to database with users
          */
-        req.setAttribute("users", storage.getAll());
+        try {
+            req.setAttribute("users", storage.getAll());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         Optional<User> result = this.storage.findByCredentionals(req.getParameter("username"),
                 req.getParameter("password"));

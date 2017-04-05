@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class AdminLoginTest {
 
+/*
 	@Test
 	public void GetAllUsersFromDB () throws SQLException {
 
@@ -50,11 +51,13 @@ public class AdminLoginTest {
 
 		System.out.print("id           name");
 
-		/**.
+		*/
+/**.
 		 * For correct queries need check type of requested variables -
 		 * id need type int, name need type String.
 		 * See SQL code, where table "clients" was created.
-		 */
+		 *//*
+
 		while (resultSet.next()) {
 			System.out.print("\n" + resultSet.getInt("id"));
 			System.out.print("            " + resultSet.getString("name"));
@@ -62,5 +65,6 @@ public class AdminLoginTest {
 		}
 		testConnectionOne.close();
 	}
+*/
 
 }

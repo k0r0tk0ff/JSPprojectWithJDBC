@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class UserDel extends HttpServlet {
 
-    private final WorkStorage storage = WorkStorage.getInstance();
+    private final WorkStorage storage = (WorkStorage) WorkStorage.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         storage.deleteUser(storage.getUserById(request.getParameter("id")));

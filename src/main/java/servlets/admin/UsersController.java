@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  * Add another dependencies;
  */
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**.
  * Servlet for use programm
@@ -35,7 +36,7 @@ public class UsersController extends HttpServlet  {
      /**
      * Add storage of users
      */
-    private final WorkStorage storage = WorkStorage.getInstance();
+    private final WorkStorage storage = (WorkStorage) WorkStorage.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,7 +46,11 @@ public class UsersController extends HttpServlet  {
          * Add binding (alias) - in java "attribute"
          * for use short path in calls.
          */
-        request.setAttribute("users", storage.getAll());
+        try {
+            request.setAttribute("users", storage.getAll());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         /**.
          * Add dispatcher whose routing our requests.

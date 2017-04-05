@@ -26,10 +26,20 @@ public class JDBCstorage implements Storage {
 	/**.
 	 * Use singleton for storage
 	 */
-	private static final JDBCstorage INSTANCE;
+/*	private static final JDBCstorage INSTANCE;
 
 	static {
 		INSTANCE = new JDBCstorage();
+	}*/
+
+	private static JDBCstorage INSTANCE = null;
+
+	static {
+		try {
+			INSTANCE = new JDBCstorage();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

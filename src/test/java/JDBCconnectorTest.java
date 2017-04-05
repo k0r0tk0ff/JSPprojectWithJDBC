@@ -21,11 +21,11 @@ import static service.Settings.getInstance;
 
 public class JDBCconnectorTest {
 
-    public static void main(String[] argv) throws Exception {
+/*    public static void main(String[] argv) throws Exception {
 
-        /**.
+        *//**.
          *  Check for install JDBC driver
-         */
+         *//*
         System.out.println("--- PostgreSQL JDBC Connection Testing ----");
         try {
             Class.forName("org.postgresql.Driver");
@@ -37,27 +37,27 @@ public class JDBCconnectorTest {
 
         System.out.println("PostgreSQL JDBC Driver Registered!");
 
-        /**.
+        *//**.
          *  Test load settings from file
          *  (with public constructor)
-         */
-/*        Settings settings = new Settings();
+         *//*
+*//*        Settings settings = new Settings();
         ClassLoader loader = Settings.class.getClassLoader();
         try (InputStream io = loader.getResourceAsStream("dbConnect.properties")) {
             settings.load(io);
         }
         assertThat(settings.getValue("jdbc.username"), is("postgres"));
-*/
-        /**.
+*//*
+        *//**.
          *  Test load settings from file
          *  (with private constructor)
-         */
+         *//*
         Settings settings = Settings.getInstance();
         assertThat(settings.getValue("jdbc.username"), is("xxx"));
 
-        /**.
+        *//**.
         *  Test connection
-        */
+        *//*
         Connection connection = null;
 
         try {
@@ -77,5 +77,5 @@ public class JDBCconnectorTest {
         } else {
             System.out.println(" Connection Failed!");
         }
-    }
+    }*/
 }
