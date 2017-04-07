@@ -58,4 +58,10 @@ public interface Storage {
      */
     Optional<User> findByCredentionals(String username, String password);
 
+	/**
+	 * For close connect to database
+     */
+    public void close();
+
+
 }

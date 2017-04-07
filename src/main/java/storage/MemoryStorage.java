@@ -136,4 +136,12 @@ public class MemoryStorage implements Storage {
         return userForReturn;
     }
 
+    /**
+     * For close connect to database
+     */
+    @Override
+    public void close() {
+
+    }
+
 }

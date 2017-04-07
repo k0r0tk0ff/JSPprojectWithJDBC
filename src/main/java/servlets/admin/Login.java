@@ -92,4 +92,10 @@ public class Login extends HttpServlet {
             this.doGet(req, resp);
         }
     }
+
+    @Override
+    public void destroy() {
+        super.destroy();
+        storage.close();
+    }
 }

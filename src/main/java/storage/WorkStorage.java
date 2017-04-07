@@ -75,4 +75,12 @@ public class WorkStorage implements Storage {
     public Optional<User> findByCredentionals(String username, String password) {
          return null;
     }
+
+    /**
+     * For close connect to database
+     */
+    @Override
+    public void close() {
+
+    }
 }

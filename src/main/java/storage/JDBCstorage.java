@@ -155,4 +155,16 @@ public class JDBCstorage implements Storage {
         return userForReturn;
     }
 
+	/**
+	 * For close connect to database
+	 */
+	@Override
+	public void close() {
+		try {
+			connection.close();
+		} catch (SQLException sqlException) {
+			sqlException.printStackTrace();
+		}
+	}
+
 }

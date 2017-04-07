@@ -88,4 +88,10 @@ public class UsersController extends HttpServlet  {
 
         //response.sendRedirect(String.format("%s/users/UsersView.do",request.getContextPath()));
     }
+
+    @Override
+    public void destroy() {
+	    super.destroy();
+	    storage.close();
+    }
 }

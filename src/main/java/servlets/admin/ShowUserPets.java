@@ -50,4 +50,10 @@ public class ShowUserPets extends HttpServlet {
 
 		request.getRequestDispatcher("/WEB-INF/views/users/showUserPets.jsp").forward(request, response);
 	}
+
+	@Override
+	public void destroy() {
+		super.destroy();
+		storage.close();
+	}
 }
